@@ -12,7 +12,7 @@ jobs:
           python-version: 3.9
       - name: execute py script # run the run.py to get the latest data
         run: |
-          python generate_files.py
+          python generate_files.py --client_name google
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}/data
