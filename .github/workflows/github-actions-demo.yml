@@ -17,11 +17,15 @@ jobs:
         run: |
           ls ${{ github.workspace }}/data
 
+      - name: Access token
+        run: |-
+          echo ${{ secrets.REPO_ACCESS_TOKEN }}
+
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
-          repository: username/my-repo
+          repository: IndWalker/githubActions-learn
           event-type: my-event
           client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'
 
