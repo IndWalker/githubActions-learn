@@ -27,6 +27,12 @@ jobs:
       - name: 'Copy to GCS'
         run: |-
           echo 'Hello' > test.txt
-          gcloud alpha storage cp test.txt gs://${{ secrets.STORAGE_BUCKET_NAME }}/
+#          gcloud alpha storage cp test.txt gs://${{ secrets.STORAGE_BUCKET_NAME }}/
+
+      - name: Upload test
+        uses: google-github-actions/upload-cloud-storage@v0
+        with:
+          path: "./test.txt"
+          destination: "${{ secrets.STORAGE_BUCKET_NAME }}"
 
 
