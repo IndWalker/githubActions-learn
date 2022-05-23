@@ -19,3 +19,14 @@ jobs:
           workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.SERVICE_ACCOUNT }}
 
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v0'
+        with:
+          install_components: 'alpha'
+
+      - name: 'Copy to GCS'
+        run: |-
+          echo 'Hello' > test.txt
+          gcloud alpha cp test.txt gs://${{ secrets.STORAGE_BUCKET_NAME }}/
+
+
