@@ -27,6 +27,6 @@ jobs:
       - name: 'Copy to GCS'
         run: |-
           echo 'Hello' > test.txt
-          gcloud alpha cp test.txt gs://${{ secrets.STORAGE_BUCKET_NAME }}/
+          gcloud alpha storage cp test.txt gs://${{ secrets.STORAGE_BUCKET_NAME }}/
 
 
