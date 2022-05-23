@@ -1,0 +1,17 @@
+name: Deploy GCP infra
+on:
+  workflow_dispatch
+
+jobs:
+  deploy-gcp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: 'actions/checkout@v3'
+
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          workload_identity_provider: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+
